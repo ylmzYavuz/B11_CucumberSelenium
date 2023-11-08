@@ -19,10 +19,12 @@ public class Login_StepDefs {
     public void the_user_should_be_able_to_login() {
         System.out.println("I verify that URL is changed to dashboard");
     }
+
     @When("The user enters student credentials")
     public void the_user_enters_student_credentials() {
         System.out.println("I enter student username and password then click login button");
     }
+
     @When("The user enters developer credentials")
     public void the_user_enters_developer_credentials() {
         System.out.println("I enter developer username and password then click login button");
