@@ -6,10 +6,11 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
+        plugin = {"json:target/cucumber.json"},
         features = "src/test/resources/features",
         glue = "com/eurotech/stepDefinitions",
-        dryRun =false, //tanimsiz stepleri tanimli hale getiriyor-->True durumunda kod calismiyor
-        tags = "@regression"
+        dryRun = false,
+        tags = "@wip"
 )
 public class CukesRunner {
 }
