@@ -11,10 +11,10 @@ public class DashboardPage extends BasePage{
 
     @FindBy(id = "dashboard-h1")
     public WebElement dashboardText;
-    @FindBy(xpath = "//p[@id='dashboard-p1']")
+    @FindBy(id = "dashboard-p1")
     public WebElement welcomeText;
-    @FindBy(css = ".btn.btn-light")
-    public List<WebElement> dashboardList;
+    @FindBy(css = ".btn.btn-light")//#dashboard-edit-container>a
+    public List<WebElement> dashboardEditList;
     @FindBy(id = "post-form-btn")
     public WebElement submitBtn;
 

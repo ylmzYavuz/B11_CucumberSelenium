@@ -1,4 +1,4 @@
-
+@smoke
 Feature: Log in as different user
   #Agile Story: As a user, I should be able to log in as different user
 
