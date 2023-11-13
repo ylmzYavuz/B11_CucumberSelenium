@@ -21,6 +21,11 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//*[contains(text(),'Invalid Credentials!')]")
     public WebElement warningMessage;
 
+    @FindBy(xpath = "//div[text()='Please include a valid email!']")
+    public WebElement invalidEmailMessage;
+    @FindBy(css = ".alert.alert-danger")
+    public WebElement generalWarningMessage;
+
     ////////////////////////////////////////////////////////////
 
     //FindAll annotation is used like logical OR, and if one of the FindBy annotation finds element, it locates
@@ -86,5 +91,19 @@ public class LoginPage extends BasePage {
         userEmailInput.sendKeys(email);
         userPasswordInput.sendKeys(password);
         submitBtn.click();
+    }
+    public String getDisapperingWarningMessage(String message){
+        String actualMessage = null;
+        if (message.contains("@")){
+            actualMessage=userEmailInput.getAttribute("validationMessage");
+            System.out.println("actualMessage = " + actualMessage);
+        }else if (message.contains("valid")){
+            actualMessage=generalWarningMessage.getText();
+            System.out.println("actualMessage = " + actualMessage);
+            return actualMessage;
+        }
+
+        return actualMessage;
+
     }
 }

@@ -2,6 +2,7 @@ package com.eurotech.stepDefinitions;
 
 import com.eurotech.pages.DashboardPage;
 import com.eurotech.pages.LoginPage;
+import com.eurotech.utilities.BrowserUtils;
 import com.eurotech.utilities.ConfigurationReader;
 import com.eurotech.utilities.Driver;
 import io.cucumber.java.en.Given;
@@ -49,5 +50,16 @@ public class Login_StepDefs {
     public void the_welcome_message_contains(String user) {
 
         Assert.assertTrue(dashboardPage.welcomeText.getText().contains(user));
+    }
+    @Then("The warning message message contains {string}")
+    public void the_warning_message_message_contains(String expectedMessage) {
+        //to find totally disapearing warning message
+        //String validationMessage=loginPage.userEmailInput.getAttribute("validationMessage");
+        //System.out.println("validationMessage = " + validationMessage);
+        //Assert.assertEquals(expectedMessage,validationMessage);
+        BrowserUtils.waitFor(2);
+        String actualMessage=loginPage.getDisapperingWarningMessage(expectedMessage);
+        Assert.assertEquals(expectedMessage,actualMessage);
+
     }
 }

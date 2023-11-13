@@ -33,7 +33,6 @@ public class DashboardMenu_StepDefs {
 
     @When("The user logs in using following credentials")
     public void the_user_logs_in_using_following_credentials(Map<String, String> userCredentials) {
-        System.out.println("userCredentials = " + userCredentials);
         loginPage.login(userCredentials.get("userEmail"), userCredentials.get("password"));
         BrowserUtils.waitForVisibility(dashboardPage.welcomeText, 1);
         Assert.assertTrue(dashboardPage.welcomeText.getText().contains(userCredentials.get("message")));
@@ -41,7 +40,6 @@ public class DashboardMenu_StepDefs {
 
     @Then("The user should be able see following editAdd menu")
     public void the_user_should_be_able_see_following_edit_add_menuList(List<String> expectedLIst) {
-        System.out.println("expectedLIst.size() = " + expectedLIst.size());
         System.out.println("menuOptions = " + expectedLIst);
         List<String> actualList = BrowserUtils.getElementsText(dashboardPage.dashboardEditList);
         System.out.println("actualList = " + actualList);
