@@ -12,6 +12,7 @@ Feature: Dashboard Page Menu
       | My Account |
 
 #oop collection map concept
+  @parallelExecution
   Scenario: Log in as a specific user
     Given The user is on the login page
     When The user logs in using following credentials

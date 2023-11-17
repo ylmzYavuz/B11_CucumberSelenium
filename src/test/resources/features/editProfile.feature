@@ -1,4 +1,4 @@
-@edit_with_DT
+@edit_with_DT @parallelExecution
 Feature: The user should be able to edit profile information
 
   Background:

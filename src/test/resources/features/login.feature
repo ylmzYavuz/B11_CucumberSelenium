@@ -1,5 +1,5 @@
 @regression @login
-
+@parallelExecution
 # @wip --> work in progress
 # ctrl + alt + L --> formats the page structure for windows
 # option + command + L --> formats the page structure for macOS

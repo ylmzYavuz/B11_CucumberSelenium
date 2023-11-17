@@ -1,3 +1,4 @@
+@parallelExecution
 Feature: Negative Login Test
 
   #ClassTask--> Create a Negative Login Test Feature file with Scenario Outline which includes 4 different data as;
