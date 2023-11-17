@@ -1,5 +1,6 @@
 package com.eurotech.stepDefinitions;
 
+import com.eurotech.utilities.BrowserUtils;
 import com.eurotech.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -24,6 +25,7 @@ public class Hooks {//Isim gut practice genel kabul görmüs isim
             scenario.attach(screenshot,"image/png","screenshot");
         }
         //System.out.println("\tThis is coming from After method");
+        BrowserUtils.waitFor(2);
         Driver.closeDriver();
     }
     @Before("@db")

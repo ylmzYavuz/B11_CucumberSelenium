@@ -1,6 +1,7 @@
 package com.eurotech.pages;
 
 
+import com.eurotech.utilities.BrowserUtils;
 import com.eurotech.utilities.ConfigurationReader;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
