@@ -50,5 +50,4 @@ public class navigationsMenuStepDefs {
         String actualHeaderText= dashboardPage.getHeaderText(header);
         Assert.assertEquals("Verify that the header name is displayed",header,actualHeaderText);
     }
-
 }
