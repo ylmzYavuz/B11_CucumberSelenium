@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import java.util.Map;
@@ -16,6 +18,7 @@ public abstract class BasePage {//abstract olmasinin sebebi bu clastan obje olus
     public BasePage() {
         PageFactory.initElements(Driver.get(),this);
     }
+    WebDriverWait wait=new WebDriverWait(Driver.get(),10);
     @FindBy(className = "nav__menu-item")
     public List<WebElement> menuList;
     @FindBy(id = "navbar-menu-list2-item2")//burasi daha genel oldugu icin basepage icine koyduk
@@ -40,5 +43,10 @@ public abstract class BasePage {//abstract olmasinin sebebi bu clastan obje olus
         ExcelUtil excelUtil=new ExcelUtil("src/test/resources/Batch11_DevEx.xlsx", sheetName);
         List<Map<String, String>> dataList = excelUtil.getDataList();
         return dataList;
+    }
+    public void click(WebElement element){
+        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+    } public void click(By locator){
+        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
 }

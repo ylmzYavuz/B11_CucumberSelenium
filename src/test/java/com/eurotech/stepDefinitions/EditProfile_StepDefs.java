@@ -6,6 +6,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
+import java.util.List;
+import java.util.Map;
+
 public class EditProfile_StepDefs {
     EditProfilePage editProfilePage = new EditProfilePage();
     DashboardPage dashboardPage = new DashboardPage();
@@ -28,7 +31,8 @@ public class EditProfile_StepDefs {
 
     @When("The user clicks on the submit button")
     public void the_user_clicks_on_the_submit_button() {
-        editProfilePage.editProfSubmitBtn.click();
+        //editProfilePage.editProfSubmitBtn.click();
+        editProfilePage.click(editProfilePage.editProfSubmitBtn);
     }
 
     @Then("The user verifies that {string} info in excel {string} {int}")
@@ -38,5 +42,29 @@ public class EditProfile_StepDefs {
         Assert.assertEquals(dashboardPage.getDataList(sheetName).get(rowNumber).get(infiTitle), actualCompanyName);
     }
 
+    @Then("The user verifies that profile info has been successfully updated")
+    public void the_user_verifies_that_profile_info_has_been_successfully_updated() {
+        Assert.assertTrue(editProfilePage.profileUpdateMessage.isDisplayed());
+    }
+
+    @When("The user add following information into related inputBox")
+    public void the_user_add_following_information_into_related_input_box(List<Map<String, String>> dataTable) {
+        System.out.println("dataTable.size() = " + dataTable.size());
+        for (int i = 0; i < dataTable.size(); i++) {
+            System.out.println("i = " + i);
+            System.out.println("dataTable.get(i).values() = " + dataTable.get(i).values());
+            String[] dataArray = dataTable.get(i).values().toArray(new String[i]);
+
+            if (dataArray.length >= 2) {
+                String firstElement = dataArray[0];
+                String secondelement = dataArray[1];
+                System.out.println("firstElement = " + firstElement);
+                System.out.println("secondelement = " + secondelement);
+                editProfilePage.addInfo(firstElement, secondelement);
+            } else {
+                System.out.println("There is not enuogh element value");
+            }
+        }
+    }
 }
 

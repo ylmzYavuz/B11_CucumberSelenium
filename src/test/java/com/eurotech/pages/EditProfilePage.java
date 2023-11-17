@@ -18,6 +18,8 @@ public class EditProfilePage extends BasePage {
 
     @FindBy(id = "slider-input")
     public WebElement l_slider;
+    @FindBy(xpath = "//div[text()='Profile Updated']")
+    public WebElement profileUpdateMessage;
 
     @FindBy(id = "editprofile-from-addsocial-btn")
     public WebElement editProfSubmitBtn;
@@ -25,6 +27,7 @@ public class EditProfilePage extends BasePage {
     public void selectMenu(WebElement element, String status) {
         Select select = new Select(selectBox);
         select.selectByVisibleText(status);
+
     }
 
     public void slider(int num) {
@@ -36,18 +39,21 @@ public class EditProfilePage extends BasePage {
             l_slider.sendKeys(Keys.ARROW_RIGHT);//geri götürüyor
         }
     }
-    public void slider(int num,WebElement element,String value){
-        int sliderNum= Integer.parseInt(element.getAttribute(value));
-        for (int i = 0; i <sliderNum; i++) {
+
+    public void slider(int num, WebElement element, String value) {
+        int sliderNum = Integer.parseInt(element.getAttribute(value));
+        for (int i = 0; i < sliderNum; i++) {
             l_slider.sendKeys(Keys.ARROW_LEFT);
         }
-        for (int i = 0; i <num ; i++) {
+        for (int i = 0; i < num; i++) {
             l_slider.sendKeys(Keys.ARROW_RIGHT);
         }
     }
-    public void addInfo(String inputBoxName,String userInfo){
+
+    public void addInfo(String inputBoxName, String userInfo) {
         WebElement placeHolder = Driver.get().findElement(By.name(inputBoxName));
         placeHolder.clear();
         placeHolder.sendKeys(userInfo);
     }
+
 }

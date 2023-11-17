@@ -25,7 +25,6 @@ public class Hooks {//Isim gut practice genel kabul görmüs isim
             scenario.attach(screenshot,"image/png","screenshot");
         }
         //System.out.println("\tThis is coming from After method");
-        BrowserUtils.waitFor(2);
         Driver.closeDriver();
     }
     @Before("@db")
