@@ -4,7 +4,6 @@ Feature: The user should be able to edit profile information
   Background:
     Given The user is on the login page
 
-  @wip
   Scenario: Edit profile
     When The user logs in using "eurotech@gmail.com" and "Test12345!"
     And The user navigates to "Edit Profile" menu
