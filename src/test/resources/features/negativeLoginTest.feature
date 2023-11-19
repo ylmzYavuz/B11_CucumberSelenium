@@ -11,7 +11,7 @@ Feature: Negative Login Test
   Scenario Outline: Negative login test
     Given The user is on the login page
     When The user logs in using "<userType>" and "<password>"
-    Then The warning message message contains '<message>'
+    Then The warning message contains '<message>'
     Examples:
       | userType          | password   | message                                                                                        |
       | eurotech@         | Test12345! | Gib etwas nach dem @-Zeichen ein. Die Angabe „eurotech@“ ist unvollständig.                    |
