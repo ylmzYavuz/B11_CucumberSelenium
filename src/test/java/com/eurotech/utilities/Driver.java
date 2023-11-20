@@ -15,17 +15,22 @@ public class Driver {
 
     private Driver() {
     }
+    // InheritableThreadLocal  --> this is like a container, bag, pool.
+    // in this pool we can have separate objects for each thread
+    // for each thread, in InheritableThreadLocal we can have separate object for that thread
+    // driver class will provide separate webdriver object per thread
 
-    private static InheritableThreadLocal<WebDriver> driverPool=new InheritableThreadLocal<>();
-
-
-    public static WebDriver get() {
-        String browser=System.getProperty("browser")!=null ? browser=System.getProperty("browser"):ConfigurationReader.get("browser");
+    private static InheritableThreadLocal<WebDriver> driverPool = new InheritableThreadLocal<>();
+    public static WebDriver get(){
+        //if this thread doesn't have driver - create it and add to pool
         if (driverPool.get() == null) {
+//            if we pass the driver from terminal then use that one
+//           if we do not pass the driver from terminal then use the one properties file
+            String browser = System.getProperty("browser") != null ? browser = System.getProperty("browser") : ConfigurationReader.get("browser");
             switch (browser) {
-                case "chrome": // Chrome - CHROME - cHROME
-                    WebDriverManager.chromedriver().setup(); // use only selenium-java => before version 4.6... after delete this line
-                    driverPool.set(new ChromeDriver());  // polly
+                case "chrome":
+                    WebDriverManager.chromedriver().setup();
+                    driverPool.set(new ChromeDriver());
                     break;
                 case "chrome-headless":
                     WebDriverManager.chromedriver().setup();
@@ -45,14 +50,12 @@ public class Driver {
                     WebDriverManager.iedriver().setup();
                     driverPool.set(new InternetExplorerDriver());
                     break;
-
                 case "edge":
                     if (!System.getProperty("os.name").toLowerCase().contains("windows"))
                         throw new WebDriverException("Your OS doesn't support Edge");
                     WebDriverManager.edgedriver().setup();
                     driverPool.set(new EdgeDriver());
                     break;
-
                 case "safari":
                     if (!System.getProperty("os.name").toLowerCase().contains("mac"))
                         throw new WebDriverException("Your OS doesn't support Safari");
@@ -64,8 +67,9 @@ public class Driver {
         }
         return driverPool.get();
     }
-    public  static void closeDriver(){
-        if(driverPool!=null){
+
+    public static void closeDriver() {
+        if (driverPool != null) {
             driverPool.get().quit();
             driverPool.remove();
         }
