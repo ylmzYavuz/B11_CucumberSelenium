@@ -27,7 +27,6 @@
             <version>5.5.3</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
-        <!--java&junit ayni sürüm olmali-->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
@@ -54,6 +53,7 @@
         </dependency>
 
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -61,11 +61,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M6</version>
                 <configuration>
-                    <parallel>methods</parallel>
-                    <useUnlimitedThreads>true</useUnlimitedThreads>
                     <testFailureIgnore>true</testFailureIgnore>
                     <runOrder>Alphabetical</runOrder>
-                    <!-- <rerunFailingTestsCount>1</rerunFailingTestsCount>--><!--birden fazle pencere acilmamasi icin-->
+                    <!-- <rerunFailingTestsCount>1</rerunFailingTestsCount>-->
                     <includes>
                         <include>**/*CukesRunner.java</include>
                         <include>**/*FailedTestRunner.java</include>
@@ -96,4 +94,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
