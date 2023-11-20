@@ -8,7 +8,7 @@ Feature: Negative Login Test
   # eurotec@gmail.com
   # Do not forget to take the messages which show the result as negative
   # Create Step Def class and if needed create locators and methods in related page class
-
+@grid
   Scenario Outline: Negative login test
     Given The user is on the login page
     When The user logs in using "<userType>" and "<password>"
